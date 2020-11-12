@@ -35,6 +35,7 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
         return DatePickerDialog(activity as Context, this, year, month, date)
     }
 
+    // mengirim tanggal yg dipilih ke MainActivity menggunakan Interface DialogDateListener
     override fun onDateSet(view: DatePicker, year: Int, month: Int, dayOfMonth: Int) {
         mListener?.onDialogDateSet(tag, year, month, dayOfMonth)
     }

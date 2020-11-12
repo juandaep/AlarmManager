@@ -40,6 +40,10 @@ class AlarmReceiver : BroadcastReceiver() {
         val title = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) TYPE_ONE_TIME else TYPE_REPEATING
         val notifId = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
         showToast(context, title, message)
+
+        if (message != null) {
+            showAlarmNotification(context, title, message, notifId)
+        }
     }
 
     private fun showToast(context: Context, title: String, message: String?) {
@@ -85,7 +89,7 @@ class AlarmReceiver : BroadcastReceiver() {
             notifId: Int
     ) {
         val CHANNEL_ID = "Channel_1"
-        val CHANNEL_NAME = "AlarmManage channel"
+        val CHANNEL_NAME = "AlarmManager channel"
 
         val notificationManagerCompat = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
